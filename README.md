@@ -70,7 +70,7 @@ The **Hospital Service** is a microservice within the Connected Healthcare Ecosy
 ### Installation
 1. **Clone Repository**:
    ```bash
-   git clone https://github.com/shoaibkhan188626/hospital-service.git
+   git clone https://github.com/shoaibkhan188626/hospital_service.git
    cd hospital-service
    ```
 
