@@ -12,7 +12,7 @@
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-*A secure, compliant microservice for hospital management in healthcare*
+_A secure, compliant microservice for hospital management in healthcare_
 
 [Features](#features) • [Quick Start](#quick-start) • [API Endpoints](#api-endpoints) • [Contributing](#contributing)
 
@@ -63,29 +63,35 @@ The **Hospital Service** is a microservice within the Connected Healthcare Ecosy
 ## Quick Start
 
 ### Prerequisites
+
 - Node.js v18+
 - MongoDB (local or Atlas)
 - Git
 
 ### Installation
+
 1. **Clone Repository**:
+
    ```bash
    git clone https://github.com/shoaibkhan188626/hospital_service.git
    cd hospital-service
    ```
 
 2. **Install Dependencies**:
+
    ```bash
    npm install
    ```
 
 3. **Configure `.env`**:
+
    ```bash
    cp .env.example .env
    nano .env  # Edit with your credentials
    ```
 
 4. **Start Server**:
+
    ```bash
    npm run dev  # Development with hot reload
    npm start    # Production
@@ -101,6 +107,7 @@ The **Hospital Service** is a microservice within the Connected Healthcare Ecosy
 ## Docker Setup
 
 1. **Build Image**:
+
    ```bash
    docker build -t hospital-service .
    ```
@@ -115,14 +122,16 @@ The **Hospital Service** is a microservice within the Connected Healthcare Ecosy
 ## API Endpoints
 
 ### Hospitals (`/api/hospitals`)
-| Method | Endpoint        | Description                | Auth Required |
-|--------|-----------------|----------------------------|---------------|
-| `POST` | `/`             | Create hospital            | ✅ (SERVICE_KEY) |
-| `GET`  | `/:id`          | Get hospital by ID         | ✅ (SERVICE_KEY) |
-| `PATCH`| `/:id`          | Update hospital            | ✅ (SERVICE_KEY) |
-| `DELETE`| `/:id`         | Soft-delete hospital       | ✅ (SERVICE_KEY) |
+
+| Method   | Endpoint | Description          | Auth Required    |
+| -------- | -------- | -------------------- | ---------------- |
+| `POST`   | `/`      | Create hospital      | ✅ (SERVICE_KEY) |
+| `GET`    | `/:id`   | Get hospital by ID   | ✅ (SERVICE_KEY) |
+| `PATCH`  | `/:id`   | Update hospital      | ✅ (SERVICE_KEY) |
+| `DELETE` | `/:id`   | Soft-delete hospital | ✅ (SERVICE_KEY) |
 
 **Example: Get Hospital**
+
 ```bash
 curl -X GET http://localhost:8082/api/hospitals/507f191e810c19729de860ea \
   -H "Authorization: Bearer <SERVICE_KEY>"
@@ -149,6 +158,7 @@ curl -X GET http://localhost:8082/api/hospitals/507f191e810c19729de860ea \
 ## Testing
 
 1. **Run Tests**:
+
    ```bash
    npm test
    ```
@@ -220,6 +230,7 @@ NOTIFICATION_SERVICE_URL=http://localhost:8081
 5. Push and open a PR.
 
 **Standards**:
+
 - Use ESLint/Prettier.
 - Write tests for new features.
 - Update README if needed.
@@ -248,4 +259,3 @@ See [LICENSE](LICENSE) for details.
 Built with ❤️ by Shoaib Khan
 
 </div>
-
