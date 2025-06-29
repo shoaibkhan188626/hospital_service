@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  hospital-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      - NODE_ENV=development
+      - PORT=8082
+      - MONGO_URI_LOCAL=mongodb://mongo:27017/hospital-service
+      - JWT_SECRET=your-secure-jwt-secret-32-chars
+      - SERVICE_KEY=a7b9c2d8e4f0g1h2i3j4k5l6m7n8o9p0q1r2s3t4
+      - NOTIFICATION_SERVICE_URL=http://notification-service:8081
+      - FRONTEND_URL=http://localhost:5173
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - mongo
+    networks:
+      - healthcare-net
+
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - healthcare-net
+
+networks:
+  healthcare-net:
+    driver: bridge
+
+volumes:
+  mongo-data:
