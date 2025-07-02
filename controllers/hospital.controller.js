@@ -61,10 +61,7 @@ const hospitalController = {
   async deleteHospital(req, res, next) {
     try {
       await hospitalService.deleteHospital(req.params.id);
-      res.status(204).json({
-        status: 'success',
-        message: 'Hospital deleted successfully',
-      });
+      res.status(204).send();
     } catch (err) {
       next(err);
     }

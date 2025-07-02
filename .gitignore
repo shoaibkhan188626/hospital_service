@@ -3,3 +3,4 @@ node_modules/
 logs/
 packge-lock.json
 generate_token.js
+tests/

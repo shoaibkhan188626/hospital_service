@@ -27,7 +27,7 @@ app.use(
 
 app.use(express.json());
 app.use(loggerMiddleware);
-app.get("/health", (req, res) => res.status(200).json({ staus: "OK" }));
+app.get("/health", (req, res) => res.status(200).json({ status: "OK" }));
 app.use("/api/hospitals", hospitalRoutes);
 app.use(errorHandler);
 export default app;

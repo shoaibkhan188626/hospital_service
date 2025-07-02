@@ -103,8 +103,10 @@ const hospitalService = {
 
   async deleteHospital(id) {
     try {
-      const hospital = await Hospital.findOneAndDelete(
-        { externalId: id, deleted: false } // Ensure it's not already soft-deleted if that's a concern for hard delete
+      const hospital = await Hospital.findOneAndUpdate(
+        { externalId: id, deleted: false },
+        { deleted: true, deletedAt: Date.now() },
+        { new: true }
       );
       if (!hospital) {
         logger.warn(`Hospital not found for deletion: ${id}`);

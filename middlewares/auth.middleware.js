@@ -27,7 +27,7 @@ const authMiddleware = (req, res, next) => {
     logger.error(
       `JWT verification failed : ${error.message} | Path:${req.path}`
     );
-    throw new CustomError("Invalid or expired token", 401, "UNATUHORIZED");
+    throw new CustomError("Invalid or expired token", 401, "UNAUTHORIZED");
   }
 };
 

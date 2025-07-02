@@ -64,6 +64,11 @@ const hospitalSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+
+  deletedAt: {
+    type: Date,
+    default: null,
+  },
 });
 
 hospitalSchema.pre("save", function (next) {

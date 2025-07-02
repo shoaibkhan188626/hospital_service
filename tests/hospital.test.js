@@ -8,8 +8,8 @@ import Hospital from '../models/hospital.js';
 const request = supertest(app);
 let mongoServer;
 
-const serviceKey = 'a7b9c2d8e4f0g1h2i3j4k5l6m7n8o9p0q1r2s3t4';
-const jwtSecret = 'your-secure-jwt-secret-32-chars';
+const serviceKey = process.env.SERVICE_KEY || 'a7b9c2d8e4f0g1h2i3j4k5l6m7n8o9p0q1r2s3t4'; // Fallback for testing, but should be set in CI/CD
+const jwtSecret = process.env.JWT_SECRET || 'your-secure-jwt-secret-32-chars'; // Fallback for testing, but should be set in CI/CD
 const token = jwt.sign({ key: serviceKey }, jwtSecret, { expiresIn: '1h' });
 
 beforeAll(async () => {
