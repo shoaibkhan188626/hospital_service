@@ -18,4 +18,4 @@ export const connectDB = async () => {
     throw error;
   }
 };
-console.log(process.env.MONGO_URI_LOCAL); //getting undefined
+

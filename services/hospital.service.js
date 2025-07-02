@@ -6,6 +6,13 @@ import httpClient from "../utils/httpClient.js";
 const hospitalService = {
   async createHospital(data) {
     try {
+      // Check if a hospital with the same name already exists
+      const existingHospital = await Hospital.findOne({ name: data.name, deleted: false });
+      if (existingHospital) {
+        logger.warn(`Attempt to create duplicate hospital name: ${data.name}`);
+        throw new CustomError("Hospital with this name already exists", 409, "DUPLICATE_ENTRY");
+      }
+
       const hospital = new Hospital(data);
       await hospital.save();
       logger.info(`Hospital created: ${hospital._id}`);
@@ -96,16 +103,14 @@ const hospitalService = {
 
   async deleteHospital(id) {
     try {
-      const hospital = await Hospital.findOneAndUpdate(
-        { externalId: id, deleted: false },
-        { deleted: true, updatedAt: Date.now() },
-        { new: true }
+      const hospital = await Hospital.findOneAndDelete(
+        { externalId: id, deleted: false } // Ensure it's not already soft-deleted if that's a concern for hard delete
       );
       if (!hospital) {
         logger.warn(`Hospital not found for deletion: ${id}`);
         throw new CustomError("Hospital not found", 404, "NOT_FOUND");
       }
-      logger.info(`Hospital soft-deleted: ${id}`);
+      logger.info(`Hospital hard-deleted: ${id}`);
       return hospital;
     } catch (err) {
       logger.error(`Failed to delete hospital: ${err.message}`);
