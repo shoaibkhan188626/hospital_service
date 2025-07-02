@@ -1,5 +1,7 @@
-import app from "./app";
-import mongoose from "mongoose";
+import app from "./app.js";
+import dotenv from 'dotenv';
+dotenv.config()
+
 import { connectDB } from "./config/database.js";
 import logger from "./config/logger.js";
 

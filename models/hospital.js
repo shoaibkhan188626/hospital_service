@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const hospitalSchema = new mongoose.Schema({
   externalId: {
     type: String,
-    uniqure: true,
+    unique: true,
     required: true,
     default: () => new mongoose.Types.ObjectId().toString(),
   },
@@ -16,7 +16,7 @@ const hospitalSchema = new mongoose.Schema({
   },
 
   address: {
-    strees: { type: String, maxLength: 200, trim: true },
+    street: { type: String, maxLength: 200, trim: true },
     city: { type: String, maxLength: 100, trim: true },
     state: { type: String, maxLength: 200, trim: true },
     pincode: {

@@ -11,13 +11,11 @@ export const connectDB = async () => {
   }
 
   try {
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(uri);
     logger.info("Connected to MONGODB");
   } catch (error) {
     logger.error(`MongoDB connection error:${error.message}`);
     throw error;
   }
 };
+console.log(process.env.MONGO_URI_LOCAL); //getting undefined

@@ -32,7 +32,7 @@ const hospitalValidation = {
         .allow('')
         .messages({ 'string.email': 'Email must be valid' }),
     }).optional(),
-  }),
+  }).unknown(true),
 
   updateHospital: Joi.object({
     name: Joi.string().max(200).trim().messages({

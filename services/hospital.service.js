@@ -28,7 +28,7 @@ const hospitalService = {
         logger.warn(`Failed to send notification: ${notificationErr.message}`);
       }
 
-      return hospital;
+      return hospital.toObject({ getters: true, virtuals: true });
     } catch (err) {
       logger.error(`Failed to create hospital: ${err.message}`);
       throw new CustomError("Failed to create hospital", 400, "CREATE_FAILED");

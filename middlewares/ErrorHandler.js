@@ -1,7 +1,7 @@
 import logger from "../config/logger.js";
 import CustomError from "../utils/error.js";
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res, _next) => {
   logger.error(
     `${err.name || "Error"}: ${err.message} | Path: ${req.path} | Method: ${req.method}`
   );
